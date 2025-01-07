@@ -40,8 +40,8 @@ def load_data(folder_path, label):
     for file in os.listdir(folder_path):
         if file.endswith(".csv"):
             df = pd.read_csv(
-                os.path.join(folder_path, file), nrows=7500
-            )  # Remove nrows for actual model building
+                os.path.join(folder_path, file)
+            )  
             df["label"] = label
             data.append(df)
     return pd.concat(data, ignore_index=True)
