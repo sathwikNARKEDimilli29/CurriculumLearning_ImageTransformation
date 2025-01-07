@@ -3,12 +3,14 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+from sklearn.decomposition import PCA
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from tensorflow.keras.utils import to_categorical
 import matplotlib.pyplot as plt
 import shap
+
 
 # Define paths and categories
 attack_folder = [PATH_TO_ATTACK_TRAFFIC]
@@ -25,20 +27,6 @@ def load_data(folder_path, label):
             df["label"] = label
             data.append(df)
     return pd.concat(data, ignore_index=True)
-
-
-import os
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
-from sklearn.decomposition import PCA
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from tensorflow.keras.utils import to_categorical
-import matplotlib.pyplot as plt
-import shap
 
 # Define paths and categories
 attack_folder = "[PATH_TO_ATTACK_DIRECTORY]"
