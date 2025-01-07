@@ -310,9 +310,6 @@ for i in range(3):
 
 # Ensembling The NN model and the CNN model
 
-import shap
-import numpy as np
-
 common_test_data = X_test_nn
 nn_model_proba = nn_model.predict(common_test_data)
 cnn_model_proba = model.predict(common_test_data.reshape(-1, 6, 6, 1))
@@ -320,13 +317,13 @@ cnn_model_proba = model.predict(common_test_data.reshape(-1, 6, 6, 1))
 if nn_model_proba.shape[1] == 1:
     nn_model_proba = np.hstack([1 - nn_model_proba, nn_model_proba])
 
-# Step 2: Average the probabilities (Soft Voting)
+# Average the probabilities (Soft Voting)
 ensemble_proba = (nn_model_proba + cnn_model_proba) / 2
 
-# Step 3: Get final predictions
+# Get final predictions
 ensemble_predictions = np.argmax(ensemble_proba, axis=1)
 
-# Step 4: Generate the classification report
+# Generate the classification report
 ensemble_y_test = y_test_nn
 print("Classification Report for Custom Ensembled Model:")
 print(
